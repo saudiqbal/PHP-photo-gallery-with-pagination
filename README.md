@@ -1,4 +1,6 @@
 # PHP Photo Gallery
+Based on https://github.com/beamtic/php-photo-gallery
+
 **Beamtic PHP Gallery** takes advantage of PHP's build-in capabilities and file-handling to create a modern image gallery, allowing us to create categories, upload images, and organize them into categories.
 
 There is a live demo available at the website.
