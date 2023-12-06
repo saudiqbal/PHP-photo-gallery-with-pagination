@@ -28,7 +28,7 @@ Some hosts already handle permissions by default, others will not. In the latter
 You might also need to change the **upload_max_filesize** and **post_max_size** in php.ini, but again, sometimes your hosting will already allow you to upload larger files. Obviously, it is bad to upload big image files because they generally take too long time to load, and they will slow down the gallery for your visitors. It is recommended you resize images before uploading.
 
 ## Installation
-Installing the photo gallery is simple. You can either download a **.7z** file from the project website (phpphotogallery.com), or you can clone this git repository.
+Installing the photo gallery is simple. You can either download the zip file above or you can clone this git repository.
 
 Create two folders inside the installation directory named
 
