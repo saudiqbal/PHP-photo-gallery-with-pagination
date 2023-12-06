@@ -1,18 +1,10 @@
-# PHP Photo Gallery
+# PHP Photo Gallery with pagination and mobile responsive ready.
+
 Based on https://github.com/beamtic/php-photo-gallery
 
+Simplified with only the basic code needed to display the gallery in your website.
+
 **Beamtic PHP Gallery** takes advantage of PHP's build-in capabilities and file-handling to create a modern image gallery, allowing us to create categories, upload images, and organize them into categories.
-
-There is a live demo available at the website.
-
-**July 2020:** Just a quick update, since I have seen some use of this software.
-  I have not forgotten about PHP Photo Gallery; I have just been very busy with work..
-  It seems a large re-factor is needed, and I need to synchronize the code more with my File Handler to better handle concurrency.
-  
-  I am now using PHP 7.4, and PHP 8 is due to be released in November. Since I always try to work with the latest version of PHP,
-  there might be some breaking changes coming up. For example, for arrays "[]" instead of "array()", and, also, use of typed properties.
-
-  I am also considering making a Wordpress Plugin for the next update, but I will still maintain the gallery as a stand-alone-project.
 
 ## Requirements
 The gallery requires GD library to, among other things, create thumbnails from uploaded images. Some hosts will already have this installed by default. If your host does not have it installed, it is recommend you either shift to cloud hosting, or find a shared host that does have it installed.
@@ -23,6 +15,12 @@ You might also need to change the **upload_max_filesize** and **post_max_size** 
 
 ## Installation
 Installing the photo gallery is simple. You can either download a **.7z** file from the project website (phpphotogallery.com), or you can clone this git repository.
+
+Create two folders inside the installation directory named
+gallery
+thumbnails
+
+Now use your ftp client to upload your image gallery folders inside the gallery folder and then go to generate-thumbnails.php to generate thumbnails, you need to click on each folder name once to create thumbnails for each folder, if later on you add more pictures to your folder just click the folder name again in generate-thumbnails.php file.
 
 After extracting the zip and moving the files to your server, you just need to add the usual permissions with **chmod**. _*I.e:* chmod 777 -R /var/www/mysite/gallery/_
 
