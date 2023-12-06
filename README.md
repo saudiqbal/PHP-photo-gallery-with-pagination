@@ -31,8 +31,11 @@ You might also need to change the **upload_max_filesize** and **post_max_size** 
 Installing the photo gallery is simple. You can either download a **.7z** file from the project website (phpphotogallery.com), or you can clone this git repository.
 
 Create two folders inside the installation directory named
-gallery
-thumbnails
+
+**gallery**
+
+**thumbnails**
+
 
 Now use your ftp client to upload your image gallery folders inside the gallery folder and then go to generate-thumbnails.php to generate thumbnails, you need to click on each folder name once to create thumbnails for each folder, if later on you add more pictures to your folder just click the folder name again in generate-thumbnails.php file.
 
