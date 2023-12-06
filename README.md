@@ -1,4 +1,4 @@
-# PHP Photo Gallery with pagination and mobile responsive ready.
+# PHP Photo Gallery with pagination / flex layout and mobile responsive ready.
 
 Based on https://github.com/beamtic/php-photo-gallery
 
