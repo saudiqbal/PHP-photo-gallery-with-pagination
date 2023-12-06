@@ -31,7 +31,15 @@ if (isset($_GET['category'])) {
 $nb_elem_per_page = 9;
 $adjacents = 3;
 $page = isset($_GET['page'])?intval($_GET['page']-1):0;
+if(preg_match('/[^0-9]/', $page))
+{
+exit("Invalid pagination");
+}
 $pgpage = isset($_GET['page'])?$_GET['page']:1;
+if(preg_match('/[^0-9]/', $pgpage))
+{
+exit("Invalid pagination");
+}
 $number_of_pages = intval($totalfiles/$nb_elem_per_page)+2;
       foreach ((array_slice($files, $page*$nb_elem_per_page, $nb_elem_per_page)) as &$file_name) {
       //foreach ($files as &$file_name) {
