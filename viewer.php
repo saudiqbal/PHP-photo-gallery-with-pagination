@@ -60,8 +60,14 @@ if (
         if ($previous_file !== false) {
             $nav_content .= '<span class="pagination-prev"><a href="viewer.php?category=' . $requested_category . '&filename=' . $previous_file . '" class="pagination-button left">&#10094; Previous </a></span>';
         }
+        else {
+            $nav_content .= '<span class="buttonDisabled leftDisabled">&#10094; Previous </span>';
+        }
         if ($next_file !== false) {
             $nav_content .= '<span class="pagination-next"><a href="viewer.php?category=' . $requested_category . '&filename=' . $next_file . '" class="pagination-button right"> Next &#10095;</a></span>';
+        }
+        else {
+            $nav_content .= '<span class="buttonDisabled rightDisabled pagination-next"> Next &#10095;</span>';
         }
         $nav_content .= '</div';
 
@@ -126,5 +132,3 @@ header("Expires: 0");
 </div>
 </body>
 </html>
-
-
