@@ -31,6 +31,9 @@ if (
         $HTML_navigation .= ' &#10095; <a>' . $requested_file . '</a>';
 
         $files = array_values(list_files($settings));
+        if (!in_array($requested_file, $files)) {
+            exit("File not found");
+        }
         $files_count = count($files);
 
         if ($files_count >= 1) {
