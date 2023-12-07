@@ -72,7 +72,7 @@ if (
         else {
             $nav_content .= '<span class="buttonDisabled rightDisabled pagination-next"> Next &#10095;</span>';
         }
-        $nav_content .= '</div';
+        $nav_content .= '</div>';
 
         $html_content .= '<a class="card"><div class="cardtext flexible"><img src="' . $path_to_file . '" alt="' . $requested_file . '" class="fluidimg"></div></a>';
         //$html_action_controls = '<div id="action_controls"><ul><li><a href="categories.php?category=' . $requested_category . '">Back</a></li></ul></div>';
