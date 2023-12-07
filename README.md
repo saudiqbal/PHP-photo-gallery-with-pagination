@@ -54,5 +54,5 @@ The photo gallery relies on gdlib. If your server does not already have it insta
 
 ## Links:
 
-https://phpphotogallery.com/ – PHP Photo Gallery Homepage
+https://www.saudiqbal.com – PHP Photo Gallery Demo
 
