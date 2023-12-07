@@ -1,4 +1,5 @@
 <?php
+ini_set('max_execution_time', '0');
 // Remove trailing slashes (if present), and add one manually.
 // Note: This avoids a problem where some servers might add a trailing slash, and others not..
 define('BASE_PATH', rtrim(realpath(dirname(__FILE__)), "/") . '/');
