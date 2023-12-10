@@ -30,7 +30,7 @@ You might also need to change the **upload_max_filesize** and **post_max_size** 
 ## Installation
 Installing the photo gallery is simple. You can either download the zip file above or you can clone this git repository.
 
-Create two folders inside the installation directory named
+Create two folders inside the installation directory named if they are not already there.
 
 **gallery**
 
