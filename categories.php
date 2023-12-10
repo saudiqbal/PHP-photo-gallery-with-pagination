@@ -270,10 +270,9 @@ function pagination($total_pages,$limit,$page,$file,$adjacents){
 <span class="logo"><?php echo $settings['title']; ?></span>
 </header>
 <div class="container">
-
+<div class="catetory"><?php echo $requested_category; ?></div>
 <?php echo $HTML_navigation; ?>
 
-<div class="catetory"><?php echo $requested_category; ?></div>
 <div class="row-flex">
 <?php echo $HTML_cup; ?>
 </div>
