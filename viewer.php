@@ -123,10 +123,11 @@ header("Expires: 0");
 <span class="logo"><?php echo $settings['title']; ?></span>
 </header>
 <div class="container">
+<div class="catetory"><?php echo $requested_category; ?></div>
 <div class="breadcrumbs">
 <?php echo $HTML_navigation; ?>
 </div>
-<div class="catetory"><?php echo $requested_category; ?></div>
+
 <?php echo $nav_content; ?>
 
 <div class="row-flex">
