@@ -243,9 +243,9 @@ header("Expires: 0");
 <span class="logo"><?php echo $settings['title']; ?></span>
 </header>
 <div class="container">
-
-<?php echo $HTML_navigation; ?>
 <div class="catetory">Thumbnail Generator - <?php echo $requested_category; ?></div>
+<?php echo $HTML_navigation; ?>
+
 <div class="row-flex">
 <?php echo $HTML_cup; ?>
 </div>
