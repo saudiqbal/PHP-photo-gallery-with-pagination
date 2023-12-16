@@ -25,6 +25,10 @@ if (
 		$HTML_navigation .= ' &#10095; <a href="index.php">' . $translator->string('Categories') . '</a>';
 
 		$requested_category = $_GET['category'];
+		// Uncomment the following if block to enable directory checking
+		//if(!is_dir(__DIR__ . "/gallery/" . $requested_category)) {
+		//	exit("Category not found");
+		//}
 		$requested_file = $_GET['filename'];
 		$html_title = $requested_file . ' - ' . $requested_category . ' | ' . $html_title;
 		$HTML_navigation .= ' &#10095; <a href="categories.php?category='.$requested_category.'">' . $requested_category . '</a>';
