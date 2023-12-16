@@ -19,6 +19,10 @@ if (isset($_GET['category'])) {
 	$HTML_navigation .= ' &#10095; <a href="index.php">' . $translator->string('Categories') . '</a>';
 	if (preg_match("/^[a-zA-Z0-9-]/", $_GET['category'])) {
 		$requested_category = $_GET['category'];
+		// Uncomment the following if block to enable directory checking
+		//if(!is_dir(__DIR__ . "/gallery/" . $requested_category)) {
+		//	exit("Category not found");
+		//}
 		// <<<<<<<<<<<<<<<<<<<<
 		// Fetch the files in the category, and include them in an HTML ul list
 		// >>>>>>>>>>>>>>>>>>>>
