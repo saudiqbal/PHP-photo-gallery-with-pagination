@@ -4,7 +4,6 @@ require BASE_PATH . 'includes/settings.php';
 require BASE_PATH . 'lib/translator_class.php';
 $translator = new translator($settings['lang']);
 
-require BASE_PATH . 'includes/settings.php';
 $requested_category = '';
 $requested_file = '';
 $html_title = 'Viewer';
