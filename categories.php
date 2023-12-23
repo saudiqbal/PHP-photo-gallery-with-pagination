@@ -3,31 +3,27 @@
 // Note: This avoids a problem where some servers might add a trailing slash, and others not..
 define('BASE_PATH', rtrim(realpath(dirname(__FILE__)), "/") . '/');
 //require BASE_PATH . 'includes/global_functions.php';
-require BASE_PATH . 'includes/settings.php'; // Note. Include a file in same directory without slash in front of it!
-require BASE_PATH . 'lib/translator_class.php';
+//require BASE_PATH . 'includes/settings.php'; // Note. Include a file in same directory without slash in front of it!
+//require BASE_PATH . 'lib/translator_class.php';
 
-$translator = new translator($settings['lang']);
+$category_json_file = 'category_data.json';
 
 //require BASE_PATH . 'includes/dependency_checker.php';
 
 // <<<<<<<<<<<<<<<<<<<<
 // Validate the _GET category input for security and error handling
 // >>>>>>>>>>>>>>>>>>>>
-$HTML_navigation = '<a href="/">' . $translator->string('Home') . '</a>';
+$HTML_navigation = '';
 
 if (isset($_GET['category'])) {
-	$HTML_navigation .= ' &#10095; <a href="index.php">' . $translator->string('Categories') . '</a>';
+	$HTML_navigation .= '<a href="index.php">Gallery</a>';
 	if (preg_match("/^[a-zA-Z0-9-]/", $_GET['category'])) {
 		$requested_category = $_GET['category'];
-		// Uncomment the following if block to enable directory checking
-		//if(!is_dir(__DIR__ . "/gallery/" . $requested_category)) {
-		//	exit("Category not found");
-		//}
 		// <<<<<<<<<<<<<<<<<<<<
 		// Fetch the files in the category, and include them in an HTML ul list
 		// >>>>>>>>>>>>>>>>>>>>
 		$HTML_navigation .= ' &#10095; <a href="categories.php?category='.$requested_category.'">' . $requested_category . '</a>';
-		$files = list_files($settings);
+		$files = list_files();
 		$totalfiles = count($files);
 		if (count($files) >= 1) {
 			$HTML_cup = '';
@@ -54,7 +50,7 @@ if (isset($_GET['category'])) {
 			$HTML_cup .= '';
 
 		} else {
-			$HTML_cup = '<p>' . $translator->string('There are no files in:') . ' <b>' . space_or_dash('-', $requested_category) . '</b></p>';
+			$HTML_cup = '<p>There are no files in: <b>' . space_or_dash('-', $requested_category) . '</b></p>';
 		}
 	} else {
 		header("HTTP/1.0 500 Internal Server Error");
@@ -81,7 +77,7 @@ function space_or_dash($replace_this = '-', $in_this)
 		return preg_replace('/([ ]+)/', '-', $in_this);
 	}
 }
-function list_files($settings)
+function list_files()
 {
 	$directory = BASE_PATH . 'gallery/' . $_GET['category'];
 	$thumbs_directory = BASE_PATH . 'thumbnails/' . $_GET['category'];
@@ -262,16 +258,16 @@ function pagination($total_pages,$limit,$page,$file,$adjacents){
 // Pagination Ends
 ?>
 <!doctype html>
-<html lang="<?php echo $settings['lang']; ?>">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title><?php echo $settings['title']; ?></title>
+<title>PHP Photo Gallery</title>
 <link rel="stylesheet" href="templates/default/gallery.css">
 </head>
 <body>
 <header class="header">
-<span class="logo"><?php echo $settings['title']; ?></span>
+<span class="logo">PHP Photo Gallery</span>
 </header>
 <div class="container">
 <div class="catetory"><?php echo $requested_category; ?></div>
