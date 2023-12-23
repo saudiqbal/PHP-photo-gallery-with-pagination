@@ -3,23 +3,23 @@
 // Note: This avoids a problem where some servers might add a trailing slash, and others not..
 define('BASE_PATH', rtrim(realpath(dirname(__FILE__)), "/") . '/');
 //require BASE_PATH . 'includes/global_functions.php';
-require BASE_PATH . 'includes/settings.php'; // Note. Include a file in same directory without slash in front of it!
-require BASE_PATH . 'lib/translator_class.php';
+//require BASE_PATH . 'includes/settings.php'; // Note. Include a file in same directory without slash in front of it!
+//require BASE_PATH . 'lib/translator_class.php';
 
-$translator = new translator($settings['lang']);
+$category_json_file = 'category_data.json';
 
 //require BASE_PATH . 'includes/dependency_checker.php';
 
 // <<<<<<<<<<<<<<<<<<<<
 // Validate the _GET category input for security and error handling
 // >>>>>>>>>>>>>>>>>>>>
-$HTML_navigation = '<a href="index.php">' . $translator->string('Home') . '</a>';
+//$HTML_navigation = '<a href="index.php">Home</a>';
 
 // <<<<<<<<<<<<<<<<<<<<
 // Fetch categories, and include them in a HTML ul list
 // >>>>>>>>>>>>>>>>>>>>
 
-$requested_category = $translator->string('Categories');
+$requested_category = 'Gallery';
 $categories = list_directories();
 if (count($categories) >= 1) {
 	$HTML_cup = '';
@@ -30,10 +30,10 @@ if (count($categories) >= 1) {
 	}
 	$HTML_cup .= '';
 } else {
-	$HTML_cup = '<p>' . $translator->string('There are no categories yet...') . '</p>';
+	$HTML_cup = '<p>There are no categories yet...</p>';
 }
 
-$HTML_navigation = '<div class="breadcrumbs">' . $HTML_navigation . '</div>';
+//$HTML_navigation = '<div class="breadcrumbs">' . $HTML_navigation . '</div>';
 
 // ====================
 // Functions
@@ -44,20 +44,6 @@ if ($replace_this == '-') {
 } elseif ($replace_this == ' ') {
 	return preg_replace('/([ ]+)/', '-', $in_this);
 }
-}
-function list_files($settings)
-{
-	$directory = BASE_PATH . 'gallery/' . $_GET['category'];
-	$thumbs_directory = BASE_PATH . 'thumbnails/' . $_GET['category'];
-	$item_arr = array_diff(scandir($directory), array('..', '.'));
-	foreach ($item_arr as $key => $value) {
-	if (is_dir($directory . '/' . $value)) {
-		unset($item_arr["$key"]);
-	} else {
-	$path_to_file = $thumbs_directory . '/thumb-' . $value;
-}
-}
-return $item_arr;
 }
 function category_previews($category, $category_json_file)
 {
@@ -94,21 +80,19 @@ function list_directories()
 }
 ?>
 <!doctype html>
-<html lang="<?php echo $settings['lang']; ?>">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title><?php echo $settings['title']; ?></title>
+<title>PHP Photo Gallery</title>
 <link rel="stylesheet" href="templates/default/gallery.css">
 </head>
 <body>
 <header class="header">
-<span class="logo"><?php echo $settings['title']; ?></span>
+<span class="logo">PHP Photo Gallery</span>
 </header>
 <div class="container">
 <div class="catetory"><?php echo $requested_category; ?></div>
-<?php echo $HTML_navigation; ?>
-
 <div class="row-flex">
 <?php echo $HTML_cup; ?>
 </div>
