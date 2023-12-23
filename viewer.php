@@ -1,8 +1,7 @@
 <?php
 define('BASE_PATH', rtrim(realpath(dirname(__FILE__)), "/") . '/');
-require BASE_PATH . 'includes/settings.php';
-require BASE_PATH . 'lib/translator_class.php';
-$translator = new translator($settings['lang']);
+//require BASE_PATH . 'includes/settings.php';
+//require BASE_PATH . 'lib/translator_class.php';
 
 $requested_category = '';
 $requested_file = '';
@@ -13,7 +12,7 @@ $html_backlink = '';
 $next_file = false;
 $previous_file = false;
 
-$HTML_navigation = '<a href="/">' . $translator->string('Home') . '</a>';
+$HTML_navigation = '';
 
 if (
 	(isset($_GET['category'])) &&
@@ -21,19 +20,15 @@ if (
 ) {
 
 	if ((isset($_GET['filename'])) && (preg_match("/^[^\/\"'<>*]+$/", $_GET['filename']))) {
-		$HTML_navigation .= ' &#10095; <a href="index.php">' . $translator->string('Categories') . '</a>';
+		$HTML_navigation .= '<a href="index.php">Gallery</a>';
 
 		$requested_category = $_GET['category'];
-		// Uncomment the following if block to enable directory checking
-		//if(!is_dir(__DIR__ . "/gallery/" . $requested_category)) {
-		//	exit("Category not found");
-		//}
 		$requested_file = $_GET['filename'];
 		$html_title = $requested_file . ' - ' . $requested_category . ' | ' . $html_title;
 		$HTML_navigation .= ' &#10095; <a href="categories.php?category='.$requested_category.'">' . $requested_category . '</a>';
 		$HTML_navigation .= ' &#10095; <a>' . $requested_file . '</a>';
 
-		$files = array_values(list_files($settings));
+		$files = array_values(list_files());
 		if (!in_array($requested_file, $files)) {
 			exit("File not found");
 		}
@@ -93,7 +88,7 @@ if (
 // If you combine and move functions to a functions.php, you will need fix code differences!
 // ====================
 
-function list_files($settings)
+function list_files()
 {
 	$directory = BASE_PATH . 'gallery/' . $_GET['category'];
 	$thumbs_directory = BASE_PATH . 'thumbnails/' . $_GET['category'];
@@ -107,14 +102,9 @@ function list_files($settings)
 	}
 	return $item_arr;
 }
-
-header("Cache-Control: no-cache, no-store, must-revalidate");
-header("Pragma: no-cache");
-header("Expires: 0");
-//require BASE_PATH . 'templates/' . $template . '/viewer_template.php';
 ?>
 <!doctype html>
-<html lang="<?php echo $settings['lang']; ?>">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -123,14 +113,12 @@ header("Expires: 0");
 </head>
 <body>
 <header class="header">
-<span class="logo"><?php echo $settings['title']; ?></span>
+<span class="logo">PHP Photo Gallery</span>
 </header>
 <div class="container">
 <div class="catetory"><?php echo $requested_category; ?></div>
-<div class="breadcrumbs">
-<?php echo $HTML_navigation; ?>
+<div class="breadcrumbs"><?php echo $HTML_navigation; ?>
 </div>
-
 <?php echo $nav_content; ?>
 
 <div class="row-flex">
