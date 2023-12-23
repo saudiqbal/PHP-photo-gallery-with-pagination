@@ -5,19 +5,19 @@ ini_set('max_execution_time', '0');
 define('BASE_PATH', rtrim(realpath(dirname(__FILE__)), "/") . '/');
 //require BASE_PATH . 'includes/global_functions.php';
 require BASE_PATH . 'includes/settings.php'; // Note. Include a file in same directory without slash in front of it!
-require BASE_PATH . 'lib/translator_class.php';
+//require BASE_PATH . 'lib/translator_class.php';
 
-$translator = new translator($settings['lang']);
+$category_json_file = 'category_data.json';
 
 //require BASE_PATH . 'includes/dependency_checker.php';
 
 // <<<<<<<<<<<<<<<<<<<<
 // Validate the _GET category input for security and error handling
 // >>>>>>>>>>>>>>>>>>>>
-$HTML_navigation = '<a href="index.php">' . $translator->string('Home') . '</a>';
+$HTML_navigation = '<a href="index.php">Home</a>';
 
 if (isset($_GET['category'])) {
-$HTML_navigation .= ' &#10095; <a href="generate-thumbnails.php">' . $translator->string('Categories') . '</a>';
+$HTML_navigation .= ' &#10095; <a href="generate-thumbnails.php">Categories</a>';
 if (preg_match("/^[a-zA-Z0-9-]/", $_GET['category'])) {
 	$requested_category = $_GET['category'];
 	// <<<<<<<<<<<<<<<<<<<<
@@ -33,7 +33,7 @@ if (preg_match("/^[a-zA-Z0-9-]/", $_GET['category'])) {
 	}
 	$HTML_cup .= '';
 	} else {
-	$HTML_cup = '<p>' . $translator->string('There are no files in:') . ' <b>' . space_or_dash('-', $requested_category) . '</b></p>';
+	$HTML_cup = '<p>There are no files in: <b>' . space_or_dash('-', $requested_category) . '</b></p>';
 	}
 } else {
 	header("HTTP/1.0 500 Internal Server Error");
@@ -44,7 +44,7 @@ if (preg_match("/^[a-zA-Z0-9-]/", $_GET['category'])) {
 // <<<<<<<<<<<<<<<<<<<<
 // Fetch categories, and include them in a HTML ul list
 // >>>>>>>>>>>>>>>>>>>>
-$requested_category = $translator->string('Categories');
+$requested_category = 'Categories';
 $categories = list_directories();
 if (count($categories) >= 1) {
 	$HTML_cup = '';
@@ -55,7 +55,7 @@ if (count($categories) >= 1) {
 	}
 	$HTML_cup .= '';
 } else {
-	$HTML_cup = '<p>' . $translator->string('There are no categories yet...') . '</p>';
+	$HTML_cup = '<p>There are no categories yet...</p>';
 }
 }
 $HTML_navigation = '<div class="breadcrumbs">' . $HTML_navigation . '</div>';
@@ -124,13 +124,12 @@ return $item_arr;
 
 function createThumbnail($filename, $source_directory, $thumbs_directory, $max_width, $max_height)
 {
-global $translator;
 $path_to_source_file = $source_directory . '/' . $filename;
 $path_to_thumb_file = $thumbs_directory . '/thumb-' . $filename;
 $source_filetype = exif_imagetype($path_to_source_file);
 if (file_exists($thumbs_directory) !== true) {
 	if (!mkdir($thumbs_directory, 0775, true)) {
-	echo $translator->string('Error: The thumbnails directory could not be created.');
+	echo 'Error: The thumbnails directory could not be created.';
 	exit();
 	} else {
 	// On some hosts, we need to change permissions of the directory using chmod
@@ -222,7 +221,7 @@ switch ($source_filetype) {
 
 
 	default:
-	echo $translator->string('Unknown filetype. Supported filetypes are: JPG, PNG og GIF.');
+	echo 'Unknown filetype. Supported filetypes are: JPG, PNG og GIF.';
 	exit();
 }
 }
