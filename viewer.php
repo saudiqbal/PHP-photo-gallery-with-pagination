@@ -2,7 +2,7 @@
 define('BASE_PATH', rtrim(realpath(dirname(__FILE__)), "/") . '/');
 //require BASE_PATH . 'includes/settings.php';
 //require BASE_PATH . 'lib/translator_class.php';
-
+$settings = array();
 $requested_category = '';
 $requested_file = '';
 $html_title = 'Viewer';
