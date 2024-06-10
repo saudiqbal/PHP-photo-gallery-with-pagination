@@ -14,6 +14,7 @@ $category_json_file = 'category_data.json';
 // <<<<<<<<<<<<<<<<<<<<
 // Validate the _GET category input for security and error handling
 // >>>>>>>>>>>>>>>>>>>>
+$settings = array();
 $HTML_navigation = '<a href="index.php">Home</a>';
 
 if (isset($_GET['category'])) {
