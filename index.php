@@ -18,7 +18,7 @@ $category_json_file = 'category_data.json';
 // <<<<<<<<<<<<<<<<<<<<
 // Fetch categories, and include them in a HTML ul list
 // >>>>>>>>>>>>>>>>>>>>
-
+$settings = array();
 $requested_category = 'Gallery';
 $categories = list_directories();
 if (count($categories) >= 1) {
